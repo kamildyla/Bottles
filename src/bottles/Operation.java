@@ -1,44 +1,70 @@
 package bottles;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Operation {
     public static void main(String[] args) {
 
-        int numOfBottles = 0;
-        boolean flagNumOfBottles = true;
-
-        Scanner sc = new Scanner(System.in);
+        int numOfBottles = 1;
+        Bottle[] bottles;
+        boolean isNumOfBottlesRight;
 
         do {
-            System.out.print("Podaj ilość butelek: ");
-            numOfBottles = sc.nextInt();
-            if (numOfBottles < 0) {
-                flagNumOfBottles = false;
-                System.out.println("Podano nieprawidłową ilość");
+            try {
+                System.out.print("Enter number of bottles: ");
+                Scanner sc = new Scanner(System.in);
+                numOfBottles = sc.nextInt();
+                isNumOfBottlesRight = true;
+
             }
-            else {
-                flagNumOfBottles = true;
+            catch (InputMismatchException e) {
+                System.out.println("Invalid quantity specified");
+                isNumOfBottlesRight = false;
             }
+
+            if (numOfBottles <= 0) {
+                System.out.println("Invalid quantity specified");
+                isNumOfBottlesRight = false;
+                numOfBottles = 1;
+            }
+
         }
-        while (!flagNumOfBottles);
+        while (!isNumOfBottlesRight);
+
 
         // random capacity and fill level of bottles
-        Bottle[] bottle = new Bottle[numOfBottles];
-        for (int i = 0; i < numOfBottles; i++) {
-            bottle[i] = new Bottle(Bottle.randomCapacity());
-            bottle[i].randomFillLevel(bottle[i].getCapacity()) ;
-            System.out.println("Butelka nr " + bottle[i].getId() + ", pojemność: " + bottle[i].getCapacity() + " l, Napełniono: " + bottle[i].getFillLevel() + " l");
+        bottles = Bottle.createFillBottle(numOfBottles);
+
+        //Bottle.bottleSettings();
+
+
+
+        //void bottleSettings() {
+//
+        //}
+
+
+
+
+
+        System.out.println("\nChoose operation: \n1. Sour in\n2. Sour out \n3. Transfer\n4. Show bottles data \n5. Exit");
+
+        try {
+            Scanner sc = new Scanner(System.in);
+            int choiceOperation = sc.nextInt();
+        }
+        catch (InputMismatchException e) {
+            System.out.println("error");
         }
 
-        System.out.println("\nCo chcesz zrobić: \n1. Nalej\n2. Wylej \n3. Przelej \n4. Zakończ");
 
-        int choiceOperation = sc.nextInt();
+
 
         /* to add:
          * choice operation in switch:case
          * exceptions for inputs
-         * body oof rest of methods
+         * body of rest of methods
          */
 
 
