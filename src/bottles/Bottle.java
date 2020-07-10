@@ -64,11 +64,26 @@ public class Bottle {
         }
     }
 
+    static Bottle[] createFillBottle(int howManyBottles) {
+        Bottle[] bottle = new Bottle[howManyBottles];
+        for (int i = 0; i < howManyBottles; i++) {
+            bottle[i] = new Bottle(Bottle.randomCapacity());
+            bottle[i].randomFillLevel(bottle[i].getCapacity()) ;
+            System.out.println("Bottle no " + bottle[i].getId() + ", capacity: " + bottle[i].getCapacity() + " l, Fill level: " + bottle[i].getFillLevel() + " l");
+        }
+        return bottle;
+    }
+
+    // to improve
+    //static void bottleSettings() {
+    //    System.out.println("Bottle no " + bottle[i].getId() + ", capacity: " + bottle[i].getCapacity() + " l, Fill level: " + bottle[i].getFillLevel() + " l");
+    //}
+
     void pourIn(Bottle bottle, int amountOfLiquid) {
         int freeCapacity = bottle.getCapacity() - bottle.getFillLevel();
         if (amountOfLiquid > freeCapacity){
             bottle.setFillLevel(bottle.getCapacity());
-            System.out.println("Dolano " + freeCapacity + " litrów");
+            System.out.println("Added " + freeCapacity + " l");
         }
         // add other cases
     }
