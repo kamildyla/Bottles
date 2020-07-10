@@ -32,38 +32,39 @@ public class Operation {
         }
         while (!isNumOfBottlesRight);
 
-
         // random capacity and fill level of bottles
         bottles = Bottle.createFillBottle(numOfBottles);
 
-        //Bottle.bottleSettings();
+        System.out.printf("%s%n%s%n%s%n%s%n%s%n%s%n", "Choose operation:", "1. Pour in", "2. Pour out", "3. Transfer", "4. Show bottles data", "5. Exit");
 
-
-
-        //void bottleSettings() {
-//
-        //}
-
-
-
-
-
-        System.out.println("\nChoose operation: \n1. Sour in\n2. Sour out \n3. Transfer\n4. Show bottles data \n5. Exit");
+        // to delete one row below
+        int choiceOperation = 1;
 
         try {
             Scanner sc = new Scanner(System.in);
-            int choiceOperation = sc.nextInt();
+            choiceOperation = sc.nextInt();
         }
         catch (InputMismatchException e) {
             System.out.println("error");
         }
 
+        // case 1 - in proggress
+        // which bottle
+
+        // how much liquid to pour in
+
+        //method
+        Bottle.pourIn(bottles[0], choiceOperation);
 
 
+
+
+
+        // case 4 - done
+        Bottle.bottleSettings(numOfBottles, bottles);
 
         /* to add:
          * choice operation in switch:case
-         * exceptions for inputs
          * body of rest of methods
          */
 

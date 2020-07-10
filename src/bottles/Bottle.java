@@ -71,21 +71,32 @@ public class Bottle {
             bottle[i].randomFillLevel(bottle[i].getCapacity()) ;
             System.out.println("Bottle no " + bottle[i].getId() + ", capacity: " + bottle[i].getCapacity() + " l, Fill level: " + bottle[i].getFillLevel() + " l");
         }
+        System.out.printf("%n");
         return bottle;
     }
 
     // to improve
-    //static void bottleSettings() {
-    //    System.out.println("Bottle no " + bottle[i].getId() + ", capacity: " + bottle[i].getCapacity() + " l, Fill level: " + bottle[i].getFillLevel() + " l");
-    //}
-
-    void pourIn(Bottle bottle, int amountOfLiquid) {
-        int freeCapacity = bottle.getCapacity() - bottle.getFillLevel();
-        if (amountOfLiquid > freeCapacity){
-            bottle.setFillLevel(bottle.getCapacity());
-            System.out.println("Added " + freeCapacity + " l");
+    static void bottleSettings(int howManyBottles, Bottle[] arrayName) {
+        for (int i = 0; i < howManyBottles; i++) {
+            System.out.println("Bottle no " + arrayName[i].getId() + ", capacity: " + arrayName[i].getCapacity() + " l, Fill level: " + arrayName[i].getFillLevel() + " l");
         }
-        // add other cases
+    }
+
+    static void pourIn(Bottle bottle, int amountOfLiquid) {
+        int freeCapacity = bottle.getCapacity() - bottle.getFillLevel();
+        if (amountOfLiquid == freeCapacity){
+            bottle.setFillLevel(bottle.getCapacity());
+            System.out.println("Added " + freeCapacity + " l to bottle no " + bottle.getId() + "\n");
+        }
+        if (amountOfLiquid < freeCapacity) {
+            bottle.setFillLevel(bottle.getCapacity() + amountOfLiquid);
+            System.out.println("Added " + amountOfLiquid + " l to bottle no " + bottle.getId() + "\n");
+        }
+        if (amountOfLiquid > freeCapacity) {
+            bottle.setFillLevel(bottle.getCapacity());
+            System.out.println("Added " + freeCapacity + " l to bottle no " + bottle.getId() + "\n");
+        }
+
     }
 
     void pourOut() {
