@@ -38,7 +38,6 @@ public class Operation {
 
             switch (choiceAction) {
                 case "1":
-                    // case 1 - in progress
                     // which bottle
                     do {
                         try {
@@ -71,8 +70,7 @@ public class Operation {
                     }
                     while (!isValid);
 
-                    System.out.println(howManyLiters + " kita");
-                    //method
+                    // pouring in
                     Bottle.pourIn(bottles[bottleId - 1], howManyLiters);
                     break;
                 case "2":
@@ -92,14 +90,10 @@ public class Operation {
         while (!choiceAction.equals("5"));
 
 
-
-
         /* to add:
          * body of rest of methods
          * to simplify getting data from user -> create a method
          * make another class to keep "pouring" methods
          */
-
-
     }
 }
