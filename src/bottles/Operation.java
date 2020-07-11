@@ -6,65 +6,78 @@ import java.util.Scanner;
 public class Operation {
     public static void main(String[] args) {
 
-        int numOfBottles = 1;
+        int numOfBottles = 0, choiceAction = 0;
         Bottle[] bottles;
-        boolean isNumOfBottlesRight;
+        boolean isValid;
+        String menu = ("Choose operation:\n1. Pour in\n2. Pour out\n3. Transfer\n4. Show bottles data\n5. Exit");
 
         do {
             try {
                 System.out.print("Enter number of bottles: ");
                 Scanner sc = new Scanner(System.in);
                 numOfBottles = sc.nextInt();
-                isNumOfBottlesRight = true;
-
             }
-            catch (InputMismatchException e) {
-                System.out.println("Invalid quantity specified");
-                isNumOfBottlesRight = false;
-            }
+            catch (InputMismatchException e) {}
 
-            if (numOfBottles <= 0) {
+            isValid = numOfBottles > 0;
+            if (!isValid) {
                 System.out.println("Invalid quantity specified");
-                isNumOfBottlesRight = false;
-                numOfBottles = 1;
             }
 
         }
-        while (!isNumOfBottlesRight);
+        while (!isValid);
 
         // random capacity and fill level of bottles
         bottles = Bottle.createFillBottle(numOfBottles);
 
-        System.out.printf("%s%n%s%n%s%n%s%n%s%n%s%n", "Choose operation:", "1. Pour in", "2. Pour out", "3. Transfer", "4. Show bottles data", "5. Exit");
 
-        // to delete one row below
-        int choiceOperation = 1;
 
-        try {
-            Scanner sc = new Scanner(System.in);
-            choiceOperation = sc.nextInt();
+
+
+
+        do {
+            System.out.println(menu);
+            try {
+                Scanner sc = new Scanner(System.in);
+                choiceAction = sc.nextInt();
+            } catch (InputMismatchException e) {
+                choiceAction = 0;
+            }
+
+            if (choiceAction > 0 && choiceAction <=5) {
+                switch (choiceAction) {
+                    case 1:
+                        // case 1 - in proggress
+                        // which bottle
+
+                        // how Many liters to pour in
+                        int howManyLiters = 0;
+
+                        //method
+                        Bottle.pourIn(bottles[0], howManyLiters);
+                        break;
+                    case 2:
+                        break;
+                    case 3:
+                        break;
+                    case 4:
+                        Bottle.bottleSettings(numOfBottles, bottles);
+                        break;
+                    case 5:
+                        break;
+                }
+            }
+            else {
+                System.out.println("Invalid value. Enter number from 1 to 5 to select desire operation.");
+            }
+
         }
-        catch (InputMismatchException e) {
-            System.out.println("error");
-        }
-
-        // case 1 - in proggress
-        // which bottle
-
-        // how much liquid to pour in
-
-        //method
-        Bottle.pourIn(bottles[0], choiceOperation);
+        while (choiceAction != 5);
 
 
 
-
-
-        // case 4 - done
-        Bottle.bottleSettings(numOfBottles, bottles);
 
         /* to add:
-         * choice operation in switch:case
          * body of rest of methods
          */
 

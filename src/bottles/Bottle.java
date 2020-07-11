@@ -75,7 +75,6 @@ public class Bottle {
         return bottle;
     }
 
-    // to improve
     static void bottleSettings(int howManyBottles, Bottle[] arrayName) {
         for (int i = 0; i < howManyBottles; i++) {
             System.out.println("Bottle no " + arrayName[i].getId() + ", capacity: " + arrayName[i].getCapacity() + " l, Fill level: " + arrayName[i].getFillLevel() + " l");
