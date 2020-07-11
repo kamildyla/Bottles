@@ -88,7 +88,7 @@ public class Bottle {
             System.out.println("Added " + freeCapacity + " l to bottle no " + bottle.getId() + "\n");
         }
         if (amountOfLiquid < freeCapacity) {
-            bottle.setFillLevel(bottle.getCapacity() + amountOfLiquid);
+            bottle.setFillLevel(bottle.getFillLevel() + amountOfLiquid);
             System.out.println("Added " + amountOfLiquid + " l to bottle no " + bottle.getId() + "\n");
         }
         if (amountOfLiquid > freeCapacity) {

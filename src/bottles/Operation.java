@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Operation {
     public static void main(String[] args) {
 
-        int numOfBottles = 0;
+        int numOfBottles = 0, bottleId = 0, howManyLiters = -1;
         Bottle[] bottles;
         boolean isValid;
         String choiceAction;
@@ -33,26 +33,47 @@ public class Operation {
 
         do {
             System.out.println(menu);
-            //try {
-                Scanner sc = new Scanner(System.in);
-                choiceAction = sc.nextLine();
-            //} catch (InputMismatchException e) {
-            //    choiceAction = 0;
-            //}
+            Scanner sc = new Scanner(System.in);
+            choiceAction = sc.nextLine();
 
             switch (choiceAction) {
                 case "1":
-                    // case 1 - in proggress
+                    // case 1 - in progress
                     // which bottle
-                    System.out.print("Enter the bottle number: ");
+                    do {
+                        try {
+                            System.out.print("Enter the bottle number: ");
+                            Scanner botId = new Scanner(System.in);
+                            bottleId = botId.nextInt();
+                        }
+                        catch (InputMismatchException e) {}
 
-                    // how Many liters to pour in
-                    System.out.print("How many liters to pour in: ");
+                        isValid = bottleId > 0 && bottleId <= bottles.length;
+                        if (!isValid) {
+                            System.out.println("Invalid number specified, please choose from 1 to " + bottles.length );
+                        }
+                    }
+                    while (!isValid);
 
-                    int howManyLiters = 0;
+                    // how many liters to pour in
+                    do {
+                        try {
+                            System.out.print("How many liters to pour in: ");
+                            Scanner liters = new Scanner(System.in);
+                            howManyLiters = liters.nextInt();
+                        }
+                        catch (InputMismatchException e) {}
 
+                        isValid = howManyLiters >= 0;
+                        if (!isValid) {
+                            System.out.println("Invalid number specified, please choose non-negative number");
+                        }
+                    }
+                    while (!isValid);
+
+                    System.out.println(howManyLiters + " kita");
                     //method
-                    Bottle.pourIn(bottles[0], howManyLiters);
+                    Bottle.pourIn(bottles[bottleId - 1], howManyLiters);
                     break;
                 case "2":
                     break;
@@ -75,6 +96,8 @@ public class Operation {
 
         /* to add:
          * body of rest of methods
+         * to simplify getting data from user -> create a method
+         * make another class to keep "pouring" methods
          */
 
 
