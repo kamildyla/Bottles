@@ -64,6 +64,7 @@ public class Operation {
                         Bottle.bottleSettings(numOfBottles, bottles);
                         break;
                     case 5:
+                        System.out.println("Thank You!!!");
                         break;
                 }
             }
