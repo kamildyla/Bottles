@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Operation {
     public static void main(String[] args) {
 
-        int numOfBottles = 0, bottleId = 0, howManyLiters = -1;
+        int numOfBottles = 0, amountOfLiters, bottleId;
         Bottle[] bottles;
         boolean isValid;
         String choiceAction;
@@ -38,40 +38,9 @@ public class Operation {
 
             switch (choiceAction) {
                 case "1":
-                    // which bottle
-                    do {
-                        try {
-                            System.out.print("Enter the bottle number: ");
-                            Scanner botId = new Scanner(System.in);
-                            bottleId = botId.nextInt();
-                        }
-                        catch (InputMismatchException e) {}
-
-                        isValid = bottleId > 0 && bottleId <= bottles.length;
-                        if (!isValid) {
-                            System.out.println("Invalid number specified, please choose from 1 to " + bottles.length );
-                        }
-                    }
-                    while (!isValid);
-
-                    // how many liters to pour in
-                    do {
-                        try {
-                            System.out.print("How many liters to pour in: ");
-                            Scanner liters = new Scanner(System.in);
-                            howManyLiters = liters.nextInt();
-                        }
-                        catch (InputMismatchException e) {}
-
-                        isValid = howManyLiters >= 0;
-                        if (!isValid) {
-                            System.out.println("Invalid number specified, please choose non-negative number");
-                        }
-                    }
-                    while (!isValid);
-
-                    // pouring in
-                    Bottle.pourIn(bottles[bottleId - 1], howManyLiters);
+                    bottleId = Bottle.whichBottle(bottles);
+                    amountOfLiters = Bottle.howManyLiters();
+                    Bottle.pourIn(bottles[bottleId - 1], amountOfLiters);
                     break;
                 case "2":
                     break;

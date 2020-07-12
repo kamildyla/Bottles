@@ -1,24 +1,24 @@
 package bottles;
 
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class Bottle {
-    // atributes
+
     private int capacity, fillLevel, id;
     static int nextId = 1;
 
-    // constructor
     Bottle(int capacity) {
         setCapacity(capacity);
         setId();
     }
 
-    // setter
     private void setId() {
         id = nextId;
         nextId++;
     }
 
-    // setters
     private void setCapacity(int capacity) {
         if ((capacity <= 10) && (capacity >= 0)) {
             this.capacity = capacity;
@@ -35,7 +35,6 @@ public class Bottle {
         this.fillLevel = fillLevel;
     }
 
-    // getters
     public int getCapacity() {
         return this.capacity;
     }
@@ -46,7 +45,7 @@ public class Bottle {
         return this.id;
     }
 
-    // methods
+
     static int randomCapacity() {
         double x = Math.random()*13;
         int tempCapacity = (int)x-1;
@@ -104,5 +103,45 @@ public class Bottle {
 
     void transfer() {
 
+    }
+
+    static int whichBottle(Bottle[] bottle) {
+        int bottleId = 0;
+        boolean isValid;
+        do {
+            try {
+                System.out.print("Enter the bottle number: ");
+                Scanner botId = new Scanner(System.in);
+                bottleId = botId.nextInt();
+            } catch (InputMismatchException e) {
+            }
+
+            isValid = bottleId > 0 && bottleId <= bottle.length;
+            if (!isValid) {
+                System.out.println("Invalid number specified, please choose from 1 to " + bottle.length);
+            }
+        }
+        while (!isValid);
+        return bottleId;
+    }
+
+    static int howManyLiters() {
+        int amountOfLiters = -1;
+        boolean isValid;
+        do {
+            try {
+                System.out.print("How many liters to pour in: ");
+                Scanner liters = new Scanner(System.in);
+                amountOfLiters = liters.nextInt();
+            }
+            catch (InputMismatchException e) {}
+
+            isValid = amountOfLiters >= 0;
+            if (!isValid) {
+                System.out.println("Invalid number specified, please choose non-negative number");
+            }
+        }
+        while (!isValid);
+        return amountOfLiters;
     }
 }
