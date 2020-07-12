@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Operation {
     public static void main(String[] args) {
 
-        int numOfBottles = 0, amountOfLiters, bottleId;
+        int numOfBottles = 0, amountOfLiters, bottleId, bottleIdOut, bottleIdIn;
         Bottle[] bottles;
         boolean isValid;
         String choiceAction;
@@ -48,6 +48,12 @@ public class Operation {
                     Bottle.pourOut(bottles[bottleId - 1], amountOfLiters);
                     break;
                 case "3":
+                    System.out.print("From which bottle pour the liquid. ");
+                    bottleIdOut = Bottle.whichBottle(bottles);
+                    amountOfLiters = Bottle.howManyLiters("transfer");
+                    System.out.print("To which bottle pour the liquid. ");
+                    bottleIdIn = Bottle.whichBottle(bottles);
+                    Bottle.transfer(bottles[bottleIdOut - 1], amountOfLiters, bottles[bottleIdIn -1]);
                     break;
                 case "4":
                     Bottle.bottleSettings(numOfBottles, bottles);
@@ -62,10 +68,8 @@ public class Operation {
         while (!choiceAction.equals("5"));
 
 
-        /* to add:
-         * body of rest of methods
-         * to simplify getting data from user -> create a method
-         * make another class to keep "pouring" methods
+        /*
+         * to finish transfer method
          */
     }
 }

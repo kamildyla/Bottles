@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Bottle {
 
     private int capacity, fillLevel, id;
-    static int nextId = 1;
+    private static int nextId = 1;
 
     private Bottle(int capacity) {
         setCapacity(capacity);
@@ -115,8 +115,8 @@ public class Bottle {
 
     }
 
-    void transfer() {
-
+    static void transfer(Bottle bottleOut, int amountOfLiquid, Bottle bottleIn) {
+        // to finish transfer method
     }
 
     static int whichBottle(Bottle[] bottle) {
@@ -127,7 +127,8 @@ public class Bottle {
                 System.out.print("Enter the bottle number: ");
                 Scanner botId = new Scanner(System.in);
                 bottleId = botId.nextInt();
-            } catch (InputMismatchException e) {}
+            }
+            catch (InputMismatchException e) {}
 
             isValid = bottleId > 0 && bottleId <= bottle.length;
             if (!isValid) {
