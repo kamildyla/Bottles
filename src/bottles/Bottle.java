@@ -90,7 +90,7 @@ public class Bottle {
             bottle.setFillLevel(bottle.getFillLevel() + amountOfLiquid);
             System.out.println("Added " + amountOfLiquid + " l to bottle no " + bottle.getId() + "\n");
         }
-        else if (amountOfLiquid > freeCapacity) {
+        else {
             bottle.setFillLevel(bottle.getCapacity());
             System.out.println("Added " + freeCapacity + " l to bottle no " + bottle.getId() + "\n");
         }
@@ -107,7 +107,7 @@ public class Bottle {
             bottle.setFillLevel(bottle.getFillLevel() - amountOfLiquid);
             System.out.println("Subtracted " + amountOfLiquid + " l from bottle no " + bottle.getId() + "\n");
         }
-        else if (amountOfLiquid > bottle.getFillLevel()) {
+        else {
             int pouredOut = bottle.getFillLevel();
             bottle.setFillLevel(0);
             System.out.println("Subtracted " + pouredOut + " l from bottle no " + bottle.getId() + "\n");
