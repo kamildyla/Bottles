@@ -9,7 +9,7 @@ public class Bottle {
     private int capacity, fillLevel, id;
     static int nextId = 1;
 
-    Bottle(int capacity) {
+    private Bottle(int capacity) {
         setCapacity(capacity);
         setId();
     }
@@ -35,24 +35,24 @@ public class Bottle {
         this.fillLevel = fillLevel;
     }
 
-    public int getCapacity() {
+    private int getCapacity() {
         return this.capacity;
     }
-    public int getFillLevel() {
+    private int getFillLevel() {
         return this.fillLevel;
     }
-    public int getId() {
+    private int getId() {
         return this.id;
     }
 
 
-    static int randomCapacity() {
+    private static int randomCapacity() {
         double x = Math.random()*13;
         int tempCapacity = (int)x-1;
         return tempCapacity;
     }
 
-    void randomFillLevel(int capacity) {
+    private void randomFillLevel(int capacity) {
         if (capacity == 0) {
             setFillLevel(0);
         }
@@ -86,18 +86,32 @@ public class Bottle {
             bottle.setFillLevel(bottle.getCapacity());
             System.out.println("Added " + freeCapacity + " l to bottle no " + bottle.getId() + "\n");
         }
-        if (amountOfLiquid < freeCapacity) {
+        else if (amountOfLiquid < freeCapacity) {
             bottle.setFillLevel(bottle.getFillLevel() + amountOfLiquid);
             System.out.println("Added " + amountOfLiquid + " l to bottle no " + bottle.getId() + "\n");
         }
-        if (amountOfLiquid > freeCapacity) {
+        else if (amountOfLiquid > freeCapacity) {
             bottle.setFillLevel(bottle.getCapacity());
             System.out.println("Added " + freeCapacity + " l to bottle no " + bottle.getId() + "\n");
         }
 
     }
 
-    void pourOut() {
+    static void pourOut(Bottle bottle, int amountOfLiquid) {
+
+        if (amountOfLiquid == bottle.getFillLevel()){
+            bottle.setFillLevel(0);
+            System.out.println("Subtracted " + amountOfLiquid + " l from bottle no " + bottle.getId() + "\n");
+        }
+        else if (amountOfLiquid < bottle.getFillLevel()) {
+            bottle.setFillLevel(bottle.getFillLevel() - amountOfLiquid);
+            System.out.println("Subtracted " + amountOfLiquid + " l from bottle no " + bottle.getId() + "\n");
+        }
+        else if (amountOfLiquid > bottle.getFillLevel()) {
+            int pouredOut = bottle.getFillLevel();
+            bottle.setFillLevel(0);
+            System.out.println("Subtracted " + pouredOut + " l from bottle no " + bottle.getId() + "\n");
+        }
 
     }
 
@@ -113,8 +127,7 @@ public class Bottle {
                 System.out.print("Enter the bottle number: ");
                 Scanner botId = new Scanner(System.in);
                 bottleId = botId.nextInt();
-            } catch (InputMismatchException e) {
-            }
+            } catch (InputMismatchException e) {}
 
             isValid = bottleId > 0 && bottleId <= bottle.length;
             if (!isValid) {
@@ -125,12 +138,12 @@ public class Bottle {
         return bottleId;
     }
 
-    static int howManyLiters() {
+    static int howManyLiters(String operation) {
         int amountOfLiters = -1;
         boolean isValid;
         do {
             try {
-                System.out.print("How many liters to pour in: ");
+                System.out.print("How many liters to " + operation + ": ");
                 Scanner liters = new Scanner(System.in);
                 amountOfLiters = liters.nextInt();
             }

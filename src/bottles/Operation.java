@@ -39,10 +39,13 @@ public class Operation {
             switch (choiceAction) {
                 case "1":
                     bottleId = Bottle.whichBottle(bottles);
-                    amountOfLiters = Bottle.howManyLiters();
+                    amountOfLiters = Bottle.howManyLiters("pour in");
                     Bottle.pourIn(bottles[bottleId - 1], amountOfLiters);
                     break;
                 case "2":
+                    bottleId = Bottle.whichBottle(bottles);
+                    amountOfLiters = Bottle.howManyLiters("pour out");
+                    Bottle.pourOut(bottles[bottleId - 1], amountOfLiters);
                     break;
                 case "3":
                     break;
