@@ -10,7 +10,7 @@ public class Operation {
         Bottle[] bottles;
         boolean isValid;
         String choiceAction;
-        String menu = ("Choose operation:\n1. Pour in\n2. Pour out\n3. Transfer\n4. Show bottles data\n5. Exit");
+        String menu = ("\nChoose operation:\n1. Pour in\n2. Pour out\n3. Transfer\n4. Show bottles data\n5. Exit");
 
         do {
             try {
@@ -50,10 +50,10 @@ public class Operation {
                 case "3":
                     System.out.print("From which bottle pour the liquid. ");
                     bottleIdOut = Bottle.whichBottle(bottles);
-                    amountOfLiters = Bottle.howManyLiters("transfer");
                     System.out.print("To which bottle pour the liquid. ");
                     bottleIdIn = Bottle.whichBottle(bottles);
-                    Bottle.transfer(bottles[bottleIdOut - 1], amountOfLiters, bottles[bottleIdIn -1]);
+                    amountOfLiters = Bottle.howManyLiters("transfer");
+                    Bottle.transfer(bottles[bottleIdOut - 1], bottles[bottleIdIn -1], amountOfLiters);
                     break;
                 case "4":
                     Bottle.bottleSettings(numOfBottles, bottles);
@@ -67,9 +67,5 @@ public class Operation {
         }
         while (!choiceAction.equals("5"));
 
-
-        /*
-         * to finish transfer method
-         */
     }
 }

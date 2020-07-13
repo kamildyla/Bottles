@@ -1,6 +1,5 @@
 package bottles;
 
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -70,7 +69,6 @@ public class Bottle {
             bottle[i].randomFillLevel(bottle[i].getCapacity()) ;
             System.out.println("Bottle no " + bottle[i].getId() + ", capacity: " + bottle[i].getCapacity() + " l, Fill level: " + bottle[i].getFillLevel() + " l");
         }
-        System.out.printf("%n");
         return bottle;
     }
 
@@ -84,15 +82,15 @@ public class Bottle {
         int freeCapacity = bottle.getCapacity() - bottle.getFillLevel();
         if (amountOfLiquid == freeCapacity){
             bottle.setFillLevel(bottle.getCapacity());
-            System.out.println("Added " + freeCapacity + " l to bottle no " + bottle.getId() + "\n");
+            System.out.println("Added " + freeCapacity + " l to bottle no " + bottle.getId());
         }
         else if (amountOfLiquid < freeCapacity) {
             bottle.setFillLevel(bottle.getFillLevel() + amountOfLiquid);
-            System.out.println("Added " + amountOfLiquid + " l to bottle no " + bottle.getId() + "\n");
+            System.out.println("Added " + amountOfLiquid + " l to bottle no " + bottle.getId());
         }
         else {
             bottle.setFillLevel(bottle.getCapacity());
-            System.out.println("Added " + freeCapacity + " l to bottle no " + bottle.getId() + "\n");
+            System.out.println("Added " + freeCapacity + " l to bottle no " + bottle.getId());
         }
 
     }
@@ -101,22 +99,29 @@ public class Bottle {
 
         if (amountOfLiquid == bottle.getFillLevel()){
             bottle.setFillLevel(0);
-            System.out.println("Subtracted " + amountOfLiquid + " l from bottle no " + bottle.getId() + "\n");
+            System.out.println("Subtracted " + amountOfLiquid + " l from bottle no " + bottle.getId());
         }
         else if (amountOfLiquid < bottle.getFillLevel()) {
             bottle.setFillLevel(bottle.getFillLevel() - amountOfLiquid);
-            System.out.println("Subtracted " + amountOfLiquid + " l from bottle no " + bottle.getId() + "\n");
+            System.out.println("Subtracted " + amountOfLiquid + " l from bottle no " + bottle.getId());
         }
         else {
             int pouredOut = bottle.getFillLevel();
             bottle.setFillLevel(0);
-            System.out.println("Subtracted " + pouredOut + " l from bottle no " + bottle.getId() + "\n");
+            System.out.println("Subtracted " + pouredOut + " l from bottle no " + bottle.getId());
         }
 
     }
 
-    static void transfer(Bottle bottleOut, int amountOfLiquid, Bottle bottleIn) {
-        // to finish transfer method
+    static void transfer(Bottle bottleOut, Bottle bottleIn, int amountOfLiquid) {
+        int possibleToPourOut = bottleOut.getFillLevel();
+        int possibleToPourIn = bottleIn.getCapacity() - bottleIn.getFillLevel();
+        int transferAmount = Math.min(amountOfLiquid, Math.min(possibleToPourOut, possibleToPourIn));
+
+        pourOut(bottleOut, transferAmount);
+        pourIn(bottleIn,transferAmount);
+
+        System.out.println("Transfered " + transferAmount + " l from bottle no " + bottleOut.getId() + " to bottle no " + bottleIn.getId());
     }
 
     static int whichBottle(Bottle[] bottle) {
