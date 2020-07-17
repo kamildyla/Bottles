@@ -55,7 +55,7 @@ public class Operation {
                     Bottle.transfer(bottleOut, bottleIn, amountOfLiters);
                     break;
                 case "4":
-                    Bottle.displayBottlesSettings(numOfBottles, bottles);
+                    Bottle.displayBottlesSettings(bottles);
                     break;
                 case "5":
                     System.out.println("Thank You!!!");

@@ -71,9 +71,9 @@ class Bottle {
         return bottle;
     }
 
-    static void displayBottlesSettings(int numOfBottles, Bottle[] arrayName) {
-        for (int i = 0; i < numOfBottles; i++) {
-            System.out.println("Bottle no " + arrayName[i].getId() + ", capacity: " + arrayName[i].getCapacity() + " l, Fill level: " + arrayName[i].getFillLevel() + " l");
+    static void displayBottlesSettings(Bottle[] bottleList) {
+        for (Bottle bottle : bottleList) {
+            System.out.println("Bottle no " + bottle.getId() + ", capacity: " + bottle.getCapacity() + " l, Fill level: " + bottle.getFillLevel() + " l");
         }
     }
 
