@@ -6,7 +6,8 @@ import java.util.Scanner;
 public class Operation {
     public static void main(String[] args) {
 
-        int numOfBottles = 0, amountOfLiters, bottleId, bottleIdOut, bottleIdIn;
+        int numOfBottles = 0, amountOfLiters;
+        Bottle bottleOut, bottleIn;
         Bottle[] bottles;
         boolean isValid;
         String choiceAction;
@@ -18,7 +19,7 @@ public class Operation {
                 Scanner sc = new Scanner(System.in);
                 numOfBottles = sc.nextInt();
             }
-            catch (InputMismatchException e) {}
+            catch (InputMismatchException ignore) {}
 
             isValid = numOfBottles > 0;
             if (!isValid) {
@@ -38,25 +39,23 @@ public class Operation {
 
             switch (choiceAction) {
                 case "1":
-                    bottleId = Bottle.whichBottle(bottles);
-                    amountOfLiters = Bottle.howManyLiters("pour in");
-                    Bottle.pourIn(bottles[bottleId - 1], amountOfLiters);
+                    amountOfLiters = Bottle.selectLitersAmount("pour in");
+                    Bottle.pourIn(Bottle.selectBottle(bottles), amountOfLiters);
                     break;
                 case "2":
-                    bottleId = Bottle.whichBottle(bottles);
-                    amountOfLiters = Bottle.howManyLiters("pour out");
-                    Bottle.pourOut(bottles[bottleId - 1], amountOfLiters);
+                    amountOfLiters = Bottle.selectLitersAmount("pour out");
+                    Bottle.pourOut(Bottle.selectBottle(bottles), amountOfLiters);
                     break;
                 case "3":
                     System.out.print("From which bottle pour the liquid. ");
-                    bottleIdOut = Bottle.whichBottle(bottles);
+                    bottleOut = Bottle.selectBottle(bottles);
                     System.out.print("To which bottle pour the liquid. ");
-                    bottleIdIn = Bottle.whichBottle(bottles);
-                    amountOfLiters = Bottle.howManyLiters("transfer");
-                    Bottle.transfer(bottles[bottleIdOut - 1], bottles[bottleIdIn -1], amountOfLiters);
+                    bottleIn = Bottle.selectBottle(bottles);
+                    amountOfLiters = Bottle.selectLitersAmount("transfer");
+                    Bottle.transfer(bottleOut, bottleIn, amountOfLiters);
                     break;
                 case "4":
-                    Bottle.bottleSettings(numOfBottles, bottles);
+                    Bottle.displayBottlesSettings(numOfBottles, bottles);
                     break;
                 case "5":
                     System.out.println("Thank You!!!");
@@ -66,6 +65,5 @@ public class Operation {
             }
         }
         while (!choiceAction.equals("5"));
-
     }
 }
