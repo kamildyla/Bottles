@@ -61,9 +61,9 @@ class Bottle {
         }
     }
 
-    static Bottle[] createFillBottle(int howManyBottles) {
-        Bottle[] bottle = new Bottle[howManyBottles];
-        for (int i = 0; i < howManyBottles; i++) {
+    static Bottle[] createFillBottle(int numOfBottles) {
+        Bottle[] bottle = new Bottle[numOfBottles];
+        for (int i = 0; i < numOfBottles; i++) {
             bottle[i] = new Bottle(Bottle.randomCapacity());
             bottle[i].randomFillLevel(bottle[i].getCapacity()) ;
             System.out.println("Bottle no " + bottle[i].getId() + ", capacity: " + bottle[i].getCapacity() + " l, Fill level: " + bottle[i].getFillLevel() + " l");
