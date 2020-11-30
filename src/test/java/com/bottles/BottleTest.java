@@ -1,56 +1,55 @@
 package com.bottles;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BottleTest {
 
-    @Test
-    void testPourIn() {
+    private int oneLitter = 1;
+    private int twoLitters = 2;
+    private int threeLitters = 3;
+    private int fourLitters = 4;
+    private Bottle bottle1 = new Bottle();
+    private Bottle bottle2 = new Bottle();
+    private Bottle bottle3 = new Bottle();
+
+    @BeforeEach
+    public void initObjects(){
         int capacity = 5;
         int fillLevel = 3;
-        int toPourIn01 = 1;
-        int toPourIn02 = 2;
-        int toPourIn03 = 3;
-
-        Bottle bottle1 = new Bottle(capacity);
+        bottle1.setCapacity(capacity);
         bottle1.setFillLevel(fillLevel);
-        Bottle.pourIn(bottle1, toPourIn01);
+        bottle2.setCapacity(capacity);
+        bottle2.setFillLevel(fillLevel);
+        bottle3.setCapacity(capacity);
+        bottle3.setFillLevel(fillLevel);
+    }
+
+    @Test
+    void testPourIn() {
+
+        Bottle.pourIn(bottle1, oneLitter);
         assertEquals(4, bottle1.getFillLevel());
 
-        Bottle bottle2 = new Bottle(capacity);
-        bottle2.setFillLevel(fillLevel);
-        Bottle.pourIn(bottle2, toPourIn02);
+        Bottle.pourIn(bottle2, twoLitters);
         assertEquals(5, bottle2.getFillLevel());
 
-        Bottle bottle3 = new Bottle(capacity);
-        bottle3.setFillLevel(fillLevel);
-        Bottle.pourIn(bottle3, toPourIn03);
+        Bottle.pourIn(bottle3, threeLitters);
         assertEquals(5, bottle3.getFillLevel());
     }
 
     @Test
     void testPourOut() {
-        int capacity = 5;
-        int fillLevel = 2;
-        int toPourOut01 = 1;
-        int toPourOut02 = 2;
-        int toPourOut03 = 3;
 
-        Bottle bottle1 = new Bottle(capacity);
-        bottle1.setFillLevel(fillLevel);
-        Bottle.pourOut(bottle1, toPourOut01);
+        Bottle.pourOut(bottle1, twoLitters);
         assertEquals(1, bottle1.getFillLevel());
 
-        Bottle bottle2 = new Bottle(capacity);
-        bottle2.setFillLevel(fillLevel);
-        Bottle.pourOut(bottle2, toPourOut02);
+        Bottle.pourOut(bottle2, threeLitters);
         assertEquals(0, bottle2.getFillLevel());
 
-        Bottle bottle3 = new Bottle(capacity);
-        bottle3.setFillLevel(fillLevel);
-        Bottle.pourOut(bottle3, toPourOut03);
+        Bottle.pourOut(bottle3, fourLitters);
         assertEquals(0, bottle3.getFillLevel());
     }
 }
