@@ -8,7 +8,7 @@ class Bottle {
     private int capacity, fillLevel, id;
     private static int nextId = 1;
 
-    private Bottle(int capacity) {
+    Bottle(int capacity) {
         setCapacity(capacity);
         setId();
     }
@@ -30,14 +30,14 @@ class Bottle {
         }
     }
 
-    private void setFillLevel(int fillLevel) {
+    void setFillLevel(int fillLevel) {
         this.fillLevel = fillLevel;
     }
 
     private int getCapacity() {
         return this.capacity;
     }
-    private int getFillLevel() {
+    int getFillLevel() {
         return this.fillLevel;
     }
     private int getId() {
