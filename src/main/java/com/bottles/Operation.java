@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Operation {
     public static void main(String[] args) {
+        // initiating btanch main
 
         int numOfBottles = 0, amountOfLiters;
         Bottle bottleOut, bottleIn;
