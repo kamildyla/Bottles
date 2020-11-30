@@ -1,8 +1,11 @@
 package com.bottles;
 
+import lombok.NoArgsConstructor;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+@NoArgsConstructor
 class Bottle {
 
     private int capacity, fillLevel, id;
@@ -18,7 +21,7 @@ class Bottle {
         nextId++;
     }
 
-    private void setCapacity(int capacity) {
+    void setCapacity(int capacity) {
         if ((capacity <= 10) && (capacity >= 0)) {
             this.capacity = capacity;
         }
@@ -34,7 +37,7 @@ class Bottle {
         this.fillLevel = fillLevel;
     }
 
-    private int getCapacity() {
+     int getCapacity() {
         return this.capacity;
     }
     int getFillLevel() {
@@ -66,14 +69,16 @@ class Bottle {
         for (int i = 0; i < numOfBottles; i++) {
             bottle[i] = new Bottle(Bottle.randomCapacity());
             bottle[i].randomFillLevel(bottle[i].getCapacity()) ;
-            System.out.println("Bottle no " + bottle[i].getId() + ", capacity: " + bottle[i].getCapacity() + " l, Fill level: " + bottle[i].getFillLevel() + " l");
+            System.out.println("Bottle no " + bottle[i].getId() + ", capacity: " + bottle[i].getCapacity()
+                    + " l, Fill level: " + bottle[i].getFillLevel() + " l");
         }
         return bottle;
     }
 
     static void displayBottlesSettings(Bottle[] bottleList) {
         for (Bottle bottle : bottleList) {
-            System.out.println("Bottle no " + bottle.getId() + ", capacity: " + bottle.getCapacity() + " l, Fill level: " + bottle.getFillLevel() + " l");
+            System.out.println("Bottle no " + bottle.getId() + ", capacity: " + bottle.getCapacity()
+                    + " l, Fill level: " + bottle.getFillLevel() + " l");
         }
     }
 
@@ -109,7 +114,8 @@ class Bottle {
         pourOut(bottleOut, transferAmount);
         pourIn(bottleIn,transferAmount);
 
-        System.out.println("Transfered " + transferAmount + " l from bottle no " + bottleOut.getId() + " to bottle no " + bottleIn.getId());
+        System.out.println("Transfered " + transferAmount + " l from bottle no " + bottleOut.getId()
+                + " to bottle no " + bottleIn.getId());
     }
 
     static Bottle selectBottle(Bottle[] bottle) {
