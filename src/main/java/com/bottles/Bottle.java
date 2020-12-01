@@ -1,11 +1,8 @@
 package com.bottles;
 
-import lombok.NoArgsConstructor;
-
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-@NoArgsConstructor
 class Bottle {
 
     private int capacity, fillLevel, id;
