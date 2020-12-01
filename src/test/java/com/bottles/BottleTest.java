@@ -11,19 +11,16 @@ class BottleTest {
     private int twoLitters = 2;
     private int threeLitters = 3;
     private int fourLitters = 4;
-    private Bottle bottle1 = new Bottle();
-    private Bottle bottle2 = new Bottle();
-    private Bottle bottle3 = new Bottle();
+    private int capacity = 5;
+    private Bottle bottle1 = new Bottle(capacity);
+    private Bottle bottle2 = new Bottle(capacity);
+    private Bottle bottle3 = new Bottle(capacity);
 
     @BeforeEach
-    public void initObjects(){
-        int capacity = 5;
+    void initObjects(){
         int fillLevel = 3;
-        bottle1.setCapacity(capacity);
         bottle1.setFillLevel(fillLevel);
-        bottle2.setCapacity(capacity);
         bottle2.setFillLevel(fillLevel);
-        bottle3.setCapacity(capacity);
         bottle3.setFillLevel(fillLevel);
     }
 
@@ -51,5 +48,24 @@ class BottleTest {
 
         Bottle.pourOut(bottle3, fourLitters);
         assertEquals(0, bottle3.getFillLevel());
+    }
+
+    @Test
+    void testTransfer() {
+        Bottle.transfer(bottle1, bottle2, twoLitters);
+        assertEquals(1, bottle1.getFillLevel());
+        assertEquals(5, bottle2.getFillLevel());
+
+        Bottle.transfer(bottle1, bottle2, oneLitter);
+        assertEquals(1, bottle1.getFillLevel());
+        assertEquals(5, bottle2.getFillLevel());
+
+        Bottle.transfer(bottle2, bottle3, threeLitters);
+        assertEquals(3, bottle2.getFillLevel());
+        assertEquals(5, bottle3.getFillLevel());
+
+        Bottle.transfer(bottle1, bottle2, threeLitters);
+        assertEquals(0, bottle1.getFillLevel());
+        assertEquals(4, bottle2.getFillLevel());
     }
 }
