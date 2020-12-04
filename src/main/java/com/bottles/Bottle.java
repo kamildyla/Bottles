@@ -45,7 +45,7 @@ class Bottle {
     }
 
 
-    private static int randomCapacity() {
+    static int randomCapacity() {
         double x = Math.random()*13;
         return (int)x-1;
     }
