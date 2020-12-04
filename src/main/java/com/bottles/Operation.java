@@ -3,7 +3,7 @@ package com.bottles;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Operation {
+class Operation {
     public static void main(String[] args) {
 
         int numOfBottles = 0, amountOfLiters;
