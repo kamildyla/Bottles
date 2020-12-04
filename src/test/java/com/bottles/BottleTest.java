@@ -76,4 +76,12 @@ class BottleTest {
         int capacity = bottle4.getCapacity();
         assertTrue(capacity >= 0 && capacity <= 10);
     }
+
+    @Test
+    void testRandomFillLevel() {
+        Bottle bottle5 = new Bottle(7);
+        bottle5.randomFillLevel(bottle5.getCapacity());
+        int fillLevel = bottle5.getFillLevel();
+        assertTrue(fillLevel >= 0 && fillLevel <= bottle5.getCapacity());
+    }
 }

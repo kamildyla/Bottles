@@ -18,7 +18,7 @@ class Bottle {
         nextId++;
     }
 
-    void setCapacity(int capacity) {
+    private void setCapacity(int capacity) {
         if ((capacity <= 10) && (capacity >= 0)) {
             this.capacity = capacity;
         }
@@ -50,7 +50,7 @@ class Bottle {
         return (int)x-1;
     }
 
-    private void randomFillLevel(int capacity) {
+    void randomFillLevel(int capacity) {
         if (capacity == 0) {
             setFillLevel(0);
         }
