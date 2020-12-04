@@ -8,14 +8,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class BottleTest {
 
-    private int oneLitter = 1;
-    private int twoLitters = 2;
-    private int threeLitters = 3;
-    private int fourLitters = 4;
-    private int capacity = 5;
-    private Bottle bottle1 = new Bottle(capacity);
-    private Bottle bottle2 = new Bottle(capacity);
-    private Bottle bottle3 = new Bottle(capacity);
+    private final int oneLitter = 1;
+    private final int twoLitters = 2;
+    private final int threeLitters = 3;
+    private final int fourLitters = 4;
+    private final int capacity = 5;
+    private final Bottle bottle1 = new Bottle(capacity);
+    private final Bottle bottle2 = new Bottle(capacity);
+    private final Bottle bottle3 = new Bottle(capacity);
 
     @BeforeEach
     void initObjects(){
@@ -90,5 +90,4 @@ class BottleTest {
         Bottle[] bottles = Bottle.createFillBottle(4);
         assertEquals(4, bottles.length);
     }
-
 }

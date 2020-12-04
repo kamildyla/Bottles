@@ -34,7 +34,7 @@ class Bottle {
         this.fillLevel = fillLevel;
     }
 
-     int getCapacity() {
+    int getCapacity() {
         return this.capacity;
     }
     int getFillLevel() {
