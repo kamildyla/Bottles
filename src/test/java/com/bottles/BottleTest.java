@@ -84,4 +84,11 @@ class BottleTest {
         int fillLevel = bottle5.getFillLevel();
         assertTrue(fillLevel >= 0 && fillLevel <= bottle5.getCapacity());
     }
+
+    @Test
+    void testCreateFillBottle() {
+        Bottle[] bottles = Bottle.createFillBottle(4);
+        assertEquals(4, bottles.length);
+    }
+
 }
