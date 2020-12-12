@@ -19,7 +19,7 @@ class BottleTest {
     private final Bottle bottle3 = new Bottle(capacity);
 
     @BeforeEach
-    void initObjects(){
+    void initFillLevel(){
         int fillLevel = 3;
         bottle1.setFillLevel(fillLevel);
         bottle2.setFillLevel(fillLevel);
