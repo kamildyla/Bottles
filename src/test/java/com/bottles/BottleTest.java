@@ -1,6 +1,7 @@
 package com.bottles;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertTrue;
@@ -70,14 +71,14 @@ class BottleTest {
         assertEquals(4, bottle2.getFillLevel());
     }
 
-    @Test
+    @RepeatedTest(20)
     void testRandomCapacitySetCapacity() {
         Bottle bottle4 = new Bottle(Bottle.randomCapacity());
         int capacity = bottle4.getCapacity();
         assertTrue(capacity >= 0 && capacity <= 10);
     }
 
-    @Test
+    @RepeatedTest(20)
     void testRandomFillLevel() {
         Bottle bottle5 = new Bottle(7);
         bottle5.randomFillLevel(bottle5.getCapacity());
